@@ -1,12 +1,30 @@
-const Store = require('../store');
+const Storage = require('../storage');
 
 class Car {
 
     storage;
 
     constructor() {
-        this.storage = new Store();
+        this.storage = new Storage();
     }
+
+    async indexAll() {
+        return;
+    }
+
+    async store() {
+        return;
+    }
+
+    async update() {
+        return;
+    }
+
+    async destroy() {
+        return;
+    }
+
+
 
 }
 
