@@ -1,0 +1,15 @@
+{
+  "name": "proyecto-node",
+  "version": "1.0.0",
+  "description": "Api Crud without db",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "backend",
+    "api"
+  ],
+  "author": "David Pestana",
+  "license": "MIT"
+}
