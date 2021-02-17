@@ -9,11 +9,11 @@ class Car {
     }
 
     async indexAll() {
-        return;
+        return this.storage.get();
     }
 
-    async store() {
-        return;
+    async store(car) {
+        return this.storage.set(car);
     }
 
     async update() {
