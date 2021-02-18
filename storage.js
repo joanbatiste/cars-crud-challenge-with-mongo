@@ -7,6 +7,7 @@ class Storage {
         this.state = [];
     }
 
+
     async findById(id){  // PROMISE OF INSTACE
         const instance = this.state[id-1];
         if(!instance) {
@@ -15,10 +16,15 @@ class Storage {
         return instance
     }
 
-    async updateById(id, nextObject){
+    async updateById(id, object){
         await this.findById(id);
-        this.state[id-1] = nextObject;
-        return nextObject;
+        this.state[id-1] = object;
+        return object;
+    }
+
+
+    async deleteById(id){
+        return this.updateById(id,null);
     }
 
     async set(object) {
@@ -27,7 +33,9 @@ class Storage {
     }
 
     async get(){
-        return this.state.slice(-10);
+        return this.state
+        .filter((element) => element !== null)
+        .slice(-10);
     }
 
 }

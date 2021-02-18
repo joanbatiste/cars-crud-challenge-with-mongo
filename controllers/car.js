@@ -16,12 +16,12 @@ class Car {
         return this.storage.set(car);
     }
 
-    async update() {
-        return;
+    async update(id, car) {    
+        return this.storage.updateById(id,car);
     }
 
-    async destroy() {
-        return;
+    async destroy(id) {
+        return this.storage.deleteById(id);
     }
 
 
