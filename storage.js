@@ -34,6 +34,7 @@ class Storage {
 
     async get(){
         return this.state
+        .map((element, index) => element ? {...element, id:index+1} : null)
         .filter((element) => element !== null)
         .slice(-10);
     }
