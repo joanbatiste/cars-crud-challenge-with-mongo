@@ -9,9 +9,17 @@ class Storage {
 
     async findById(id){  // PROMISE OF INSTACE
         const instance = this.state[id-1];
-        return instance ? instance : new Error('Id not found');
+        if(!instance) {
+            throw new Error('Id not found');
+        } 
+        return instance
     }
 
+    async updateById(id, nextObject){
+        await this.findById(id);
+        this.state[id-1] = nextObject;
+        return nextObject;
+    }
 
     async set(object) {
         this.state.push(object)
