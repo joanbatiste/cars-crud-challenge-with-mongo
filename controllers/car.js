@@ -1,33 +1,28 @@
-const Storage = require('../storage');
+const Car = require('../models/car');
 
-class Car {
-
-    storage;
+class CarController {
 
     constructor() {
-        this.storage = new Storage();
     }
 
     async indexAll() {
-        return this.storage.get();
+        return Car.find().limit(10);
     }
 
     async store(car) {
-        return this.storage.set(car);
+        return Car.create(car);
     }
 
     async update(id, car) {    
-        return this.storage.updateById(id,car);
+        return Car.findByIdAndUpdate(id,car);
     }
 
     async destroy(id) {
-        return this.storage.deleteById(id);
+        return Car.findByIdAndRemove(id);
     }
-
-
 
 }
 
 
-let carController = new Car();
+let carController = new CarController();
 module.exports = carController;

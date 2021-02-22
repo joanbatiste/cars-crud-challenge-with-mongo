@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const carsController = require('../controllers/car');
-const Car = require('../models/car');
 
 router.get('/',async (req, res) => {   
     try{
@@ -14,7 +13,7 @@ router.get('/',async (req, res) => {
 
 router.post('/',async (req, res) => {
     try{
-        const id = await carsController.store(new Car(req.body));
+        const id = await carsController.store(req.body);
         const status = 'success';
         res.json({status,id});
     } catch( error ){
@@ -27,7 +26,7 @@ router.post('/',async (req, res) => {
 router.put('/:id',async (req,res) => {
     try{
         const id = req.params.id;
-        res.json(await carsController.update(id,new Car(req.body)));
+        res.json(await carsController.update(id,req.body));
     } catch( error ){
         return res.sendStatus(500).json({
             message: 'Server Error'
