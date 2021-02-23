@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const bcrypt = require("bcryptjs");
 
 class UserController {
 
@@ -6,22 +7,23 @@ class UserController {
     }
 
     async indexAll() {
-        return Car.find().limit(10);
+        return User.find().limit(10);
     }
 
-    async store(car) {
-        return Car.create(car);
+    async store(user) {
+        user.password = await bcrypt.hash(user.password, 5);
+        return User.create(user);
     }
 
-    async update(id, car) {    
-        return Car.findByIdAndUpdate(id,car);
+    async update(id, user) {    
+        return User.findByIdAndUpdate(id,user);
     }
 
     async destroy(id) {
-        return Car.findByIdAndRemove(id);
+        return User.findByIdAndRemove(id);
     }
 
-}
+};
 
 let userController = new UserController();
 module.exports = userController;
